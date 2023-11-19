@@ -378,3 +378,207 @@ Processing by CheckoutController#cancel as HTML
 Completed 200 OK in 18ms (Views: 9.5ms | ActiveRecord: 3.0ms | Allocations: 5240)
 
 
+Started GET "/cancel" for ::1 at 2023-11-19 07:59:45 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by CheckoutController#cancel as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering checkout/cancel.html.erb within layouts/application
+  Rendered checkout/cancel.html.erb within layouts/application (Duration: 0.5ms | Allocations: 373)
+  [1m[36mProduct Load (0.7ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1[0m  [["id", 1]]
+  ↳ app/views/layouts/application.html.erb:32
+  Rendered layout layouts/application.html.erb (Duration: 15.8ms | Allocations: 24197)
+Completed 200 OK in 39ms (Views: 14.5ms | ActiveRecord: 11.5ms | Allocations: 42844)
+
+
+Started GET "/users/sign_out" for ::1 at 2023-11-19 07:59:50 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/users/sign_out"):
+  
+Started GET "/" for ::1 at 2023-11-19 08:00:01 +0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (1.6ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:20
+  [1m[36mProduct Exists? (2.3ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."id" = $1 AND "products"."id" = $2 LIMIT $3[0m  [["id", 1], ["id", 1], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:30
+  Rendered products/index.html.erb within layouts/application (Duration: 1798.6ms | Allocations: 6908)
+  [1m[36mProduct Load (1.7ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1[0m  [["id", 1]]
+  ↳ app/views/layouts/application.html.erb:32
+  Rendered layout layouts/application.html.erb (Duration: 1810.1ms | Allocations: 9564)
+Completed 200 OK in 1820ms (Views: 1806.5ms | ActiveRecord: 7.1ms | Allocations: 12127)
+
+
+Started POST "/checkout/create" for ::1 at 2023-11-19 08:00:17 +0300
+Processing by CheckoutController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]"}
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mProduct Pluck (1.1ms)[0m  [1m[34mSELECT "products"."currency" FROM "products" WHERE "products"."id" = $1[0m  [["id", 1]]
+  ↳ app/controllers/checkout_controller.rb:4:in `create'
+  [1m[36mProduct Load (1.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1[0m  [["id", 1]]
+  ↳ app/controllers/checkout_controller.rb:10:in `collect'
+Redirected to https://checkout.stripe.com/c/pay/cs_test_b1oCBudOP2XoesvcJTVbuw144ny3bM27jiX1fhbXaD3899fF0DkSrrmdl8#fidkdWxOYHwnPyd1blpxYHZxWjA0SkZjZl9HcjZwUkRuTWFdcUBiRmdNcmY8ZHxIXGZzdWBdQDF9V2ZLb3Q1N2hHdmk0cE1RcGgzQ2R1fEZ9d2hrVGJyPElrQH9tVjB3VzBBSUIzbkxvcjZwNTVPNFc3bjdQZicpJ2N3amhWYHdzYHcnP3F3cGApJ2lkfGpwcVF8dWAnPydocGlxbFpscWBoJyknYGtkZ2lgVWlkZmBtamlhYHd2Jz9xd3BgeCUl
+Completed 302 Found in 1032ms (ActiveRecord: 3.6ms | Allocations: 6502)
+
+
+Started GET "/cancel" for ::1 at 2023-11-19 08:00:22 +0300
+Processing by CheckoutController#cancel as HTML
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering checkout/cancel.html.erb within layouts/application
+  Rendered checkout/cancel.html.erb within layouts/application (Duration: 0.1ms | Allocations: 40)
+  [1m[36mProduct Load (1.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1[0m  [["id", 1]]
+  ↳ app/views/layouts/application.html.erb:32
+  Rendered layout layouts/application.html.erb (Duration: 5.5ms | Allocations: 2506)
+Completed 200 OK in 12ms (Views: 5.2ms | ActiveRecord: 2.2ms | Allocations: 4277)
+
+
+Started GET "/products" for ::1 at 2023-11-19 08:00:28 +0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (1.4ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:20
+  [1m[36mProduct Exists? (2.8ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."id" = $1 AND "products"."id" = $2 LIMIT $3[0m  [["id", 1], ["id", 1], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:30
+  Rendered products/index.html.erb within layouts/application (Duration: 1022.0ms | Allocations: 4567)
+  [1m[36mProduct Load (1.6ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1[0m  [["id", 1]]
+  ↳ app/views/layouts/application.html.erb:32
+  Rendered layout layouts/application.html.erb (Duration: 1032.2ms | Allocations: 7013)
+Completed 200 OK in 1057ms (Views: 1027.6ms | ActiveRecord: 7.2ms | Allocations: 8790)
+
+
+Started POST "/checkout/create" for ::1 at 2023-11-19 08:00:44 +0300
+Processing by CheckoutController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]"}
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mProduct Pluck (1.0ms)[0m  [1m[34mSELECT "products"."currency" FROM "products" WHERE "products"."id" = $1[0m  [["id", 1]]
+  ↳ app/controllers/checkout_controller.rb:4:in `create'
+  [1m[36mProduct Load (0.9ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1[0m  [["id", 1]]
+  ↳ app/controllers/checkout_controller.rb:10:in `collect'
+Redirected to https://checkout.stripe.com/c/pay/cs_test_b1zpZ5kMWv8sD1zH6Q6XZn2H9T0qIAsgWr4pnCjkcs2MUEu4qWgaWhuaA1#fidkdWxOYHwnPyd1blpxYHZxWjA0SkZjZl9HcjZwUkRuTWFdcUBiRmdNcmY8ZHxIXGZzdWBdQDF9V2ZLb3Q1N2hHdmk0cE1RcGgzQ2R1fEZ9d2hrVGJyPElrQH9tVjB3VzBBSUIzbkxvcjZwNTVPNFc3bjdQZicpJ2N3amhWYHdzYHcnP3F3cGApJ2lkfGpwcVF8dWAnPydocGlxbFpscWBoJyknYGtkZ2lgVWlkZmBtamlhYHd2Jz9xd3BgeCUl
+Completed 302 Found in 955ms (ActiveRecord: 3.2ms | Allocations: 6040)
+
+
+Started GET "/success?session_id=cs_test_b1zpZ5kMWv8sD1zH6Q6XZn2H9T0qIAsgWr4pnCjkcs2MUEu4qWgaWhuaA1" for ::1 at 2023-11-19 08:01:08 +0300
+Processing by CheckoutController#success as HTML
+  Parameters: {"session_id"=>"cs_test_b1zpZ5kMWv8sD1zH6Q6XZn2H9T0qIAsgWr4pnCjkcs2MUEu4qWgaWhuaA1"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mProduct Load (1.7ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."stripe_product_id" = $1 LIMIT $2[0m  [["stripe_product_id", "prod_P26jqbwBirqNVj"], ["LIMIT", 1]]
+  ↳ app/controllers/checkout_controller.rb:26:in `block in success'
+  Rendering layout layouts/application.html.erb
+  Rendering checkout/success.html.erb within layouts/application
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."stripe_product_id" = $1 LIMIT $2[0m  [["stripe_product_id", "prod_P26jqbwBirqNVj"], ["LIMIT", 1]]
+  ↳ app/views/checkout/success.html.erb:10
+  Rendered checkout/success.html.erb within layouts/application (Duration: 3.5ms | Allocations: 683)
+  [1m[36mProduct Load (1.5ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1[0m  [["id", 1]]
+  ↳ app/views/layouts/application.html.erb:32
+  Rendered layout layouts/application.html.erb (Duration: 12.8ms | Allocations: 3151)
+Completed 200 OK in 736ms (Views: 12.5ms | ActiveRecord: 4.0ms | Allocations: 9748)
+
+
+Started GET "/products" for ::1 at 2023-11-19 08:01:12 +0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (1.8ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:20
+  Rendered products/index.html.erb within layouts/application (Duration: 1116.9ms | Allocations: 3861)
+  Rendered layout layouts/application.html.erb (Duration: 1122.3ms | Allocations: 5381)
+Completed 200 OK in 1133ms (Views: 1121.4ms | ActiveRecord: 3.7ms | Allocations: 7143)
+
+
+Started GET "/products" for ::1 at 2023-11-19 08:01:21 +0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (1.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:20
+  Rendered products/index.html.erb within layouts/application (Duration: 1067.0ms | Allocations: 3681)
+  Rendered layout layouts/application.html.erb (Duration: 1069.8ms | Allocations: 5201)
+Completed 200 OK in 1078ms (Views: 1069.6ms | ActiveRecord: 2.7ms | Allocations: 6954)
+
+
+Started GET "/products" for ::1 at 2023-11-19 08:03:37 +0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (5.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (9.5ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:20
+  Rendered products/index.html.erb within layouts/application (Duration: 1802.1ms | Allocations: 4717)
+  Rendered layout layouts/application.html.erb (Duration: 1811.6ms | Allocations: 7045)
+Completed 200 OK in 1837ms (Views: 1806.2ms | ActiveRecord: 14.6ms | Allocations: 9469)
+
+
+Started DELETE "/users/sign_out" for ::1 at 2023-11-19 08:03:41 +0300
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 12ms (ActiveRecord: 0.9ms | Allocations: 3618)
+
+
+Started GET "/" for ::1 at 2023-11-19 08:03:41 +0300
+Processing by ProductsController#index as HTML
+Completed 401 Unauthorized in 2ms (ActiveRecord: 0.0ms | Allocations: 355)
+
+
+Started GET "/users/sign_in" for ::1 at 2023-11-19 08:03:41 +0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering /Users/wishka/.rvm/gems/ruby-3.0.1/gems/devise-4.9.3/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /Users/wishka/.rvm/gems/ruby-3.0.1/gems/devise-4.9.3/app/views/devise/shared/_links.html.erb (Duration: 1.5ms | Allocations: 719)
+  Rendered /Users/wishka/.rvm/gems/ruby-3.0.1/gems/devise-4.9.3/app/views/devise/sessions/new.html.erb within layouts/application (Duration: 7.2ms | Allocations: 3665)
+  Rendered layout layouts/application.html.erb (Duration: 9.1ms | Allocations: 5303)
+Completed 200 OK in 14ms (Views: 11.5ms | ActiveRecord: 0.0ms | Allocations: 7117)
+
+
+Started GET "/users/sign_in" for ::1 at 2023-11-19 15:40:10 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (3.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering /Users/wishka/.rvm/gems/ruby-3.0.1/gems/devise-4.9.3/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /Users/wishka/.rvm/gems/ruby-3.0.1/gems/devise-4.9.3/app/views/devise/shared/_links.html.erb (Duration: 0.6ms | Allocations: 743)
+  Rendered /Users/wishka/.rvm/gems/ruby-3.0.1/gems/devise-4.9.3/app/views/devise/sessions/new.html.erb within layouts/application (Duration: 3.5ms | Allocations: 4653)
+  Rendered layout layouts/application.html.erb (Duration: 15.7ms | Allocations: 23031)
+Completed 200 OK in 44ms (Views: 20.9ms | ActiveRecord: 13.3ms | Allocations: 37880)
+
+
+Started POST "/users/sign_in" for ::1 at 2023-11-19 15:40:12 +0300
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"roucke@mail.ru", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (4.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "roucke@mail.ru"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 302ms (ActiveRecord: 5.2ms | Allocations: 6737)
+
+
+Started GET "/" for ::1 at 2023-11-19 15:40:12 +0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (2.3ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:20
+  Rendered products/index.html.erb within layouts/application (Duration: 1418.4ms | Allocations: 9979)
+  Rendered layout layouts/application.html.erb (Duration: 1423.6ms | Allocations: 11882)
+Completed 200 OK in 1427ms (Views: 1419.7ms | ActiveRecord: 5.1ms | Allocations: 14463)
+
+
+Started GET "/" for ::1 at 2023-11-19 15:40:40 +0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (1.3ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:20
+  Rendered products/index.html.erb within layouts/application (Duration: 967.7ms | Allocations: 4719)
+  Rendered layout layouts/application.html.erb (Duration: 975.9ms | Allocations: 6994)
+Completed 200 OK in 984ms (Views: 977.1ms | ActiveRecord: 2.1ms | Allocations: 9544)
+
+
